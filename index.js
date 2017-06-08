@@ -45,7 +45,7 @@ getNames = function(addresses){
     consensysAcademy.names(addresses[i],function(e,encodedName){
       if(encodedName){ 
         console.log('ENCODED_NAME: ', encodedName)
-        console.log('NAME: ', hex2a(encodedName))
+        console.log('NAME: ', hex2a(encodedName.toString()))
         renderName(address, hex2a(encodedName))
       }else{
         console.log(e)
