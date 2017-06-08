@@ -46,7 +46,7 @@ getNames = function(addresses){
       if(encodedName){ 
         console.log('ENCODED_NAME: ', encodedName)
         console.log('NAME: ', hex2a(encodedName.toString()))
-        renderName(address, hex2a(encodedName))
+        renderName(address, hex2a(encodedName.toString()))
       }else{
         console.log(e)
       }
