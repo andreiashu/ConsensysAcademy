@@ -41,10 +41,11 @@ getAddresses = function(){
 
 getNames = function(addresses){
   for (var i = 0; i < addresses.length; i++) {
-    consensysAcademy.names(addresses[i],function(e,name){
-      if(name){ 
-        console.log('NAME: ', name)
-        rendername(addresses[i], name)
+    consensysAcademy.names(addresses[i],function(e,encodedName){
+      if(encodedName){ 
+        console.log('ENCODED_NAME: ', encodedName)
+        console.log('NAME: ', hex2a(name))
+        rendername(addresses[i], hex2a(name))
       }else{
         console.log(e)
       }
@@ -84,4 +85,12 @@ renderName = function(address, name){
   for (var i = 0; i < addresses.length; i++) {
     document.getElementById(address).innerHTML = address + " \t " + name; 
   }
+}
+
+function hex2a(hexx) {
+    var hex = hexx.toString();//force conversion
+    var str = '';
+    for (var i = 0; i < hex.length; i += 2)
+        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    return str;
 }
