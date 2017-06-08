@@ -10,8 +10,8 @@ window.addEventListener('load', function(){
     contractAddress = '0x12458C69eC849aF2854fDec7e0761e60D4eE7ed3';
     abi = [{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"names","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"getAddresses","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"name","type":"bytes32"}],"name":"register","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"addresses","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"}]
     consensysAcademy = web3.eth.contract(abi).at(contractAddress);
-    getAddresses();
-    getAccount();
+    setTimeout(getAddresses, 5000); 
+    setTimeout(getAccount, 5000);
   }
 })
 
@@ -31,7 +31,6 @@ getAccount = function(){
 getAddresses = function(){
   consensysAcademy.getAddresses.call(function(e,addresses){
     if(addresses){ 
-      debugger;
       console.log('ADDRESSES: ', addresses)
       renderAddresses(addresses)
     }else{
