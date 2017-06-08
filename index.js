@@ -10,8 +10,8 @@ window.addEventListener('load', function(){
     contractAddress = '0x12458C69eC849aF2854fDec7e0761e60D4eE7ed3';
     abi = [{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"names","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"getAddresses","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"name","type":"bytes32"}],"name":"register","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"addresses","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"}]
     consensysAcademy = web3.eth.contract(abi).at(contractAddress);
-    setTimeout(getAddresses, 5000); 
-    setTimeout(getAccount, 5000);
+    setTimeout(getAddresses, 1000); 
+    setTimeout(getAccount, Math.random()*5000);
   }
 })
 
@@ -42,14 +42,14 @@ getAddresses = function(){
 getNames = function(addresses){
   for (var i = 0; i < addresses.length; i++) {
     var address = addresses[i];
-    consensysAcademy.names(addresses[i],function(e,encodedName){
+    setTimeout(consensysAcademy.names(addresses[i],function(e,encodedName){
       if(encodedName){ 
         console.log('ENCODED_NAME: ', encodedName)
         renderName(address, hex2a(encodedName.toString()))
       }else{
         console.log(e)
       }
-    })
+    }), Math.random()*5000)
   }
 }
 sendTx = function(){
