@@ -41,11 +41,12 @@ getAddresses = function(){
 
 getNames = function(addresses){
   for (var i = 0; i < addresses.length; i++) {
+    var address = addresses[i];
     consensysAcademy.names(addresses[i],function(e,encodedName){
       if(encodedName){ 
         console.log('ENCODED_NAME: ', encodedName)
         console.log('NAME: ', hex2a(name))
-        renderName(addresses[i], hex2a(name))
+        renderName(address, hex2a(name))
       }else{
         console.log(e)
       }
