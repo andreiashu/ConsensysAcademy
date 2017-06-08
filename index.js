@@ -5,7 +5,7 @@ window.addEventListener('load', function(){
     //disable everything
   }else{
 
-    web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io'));
+    // web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io'));
 
     contractAddress = '0x12458C69eC849aF2854fDec7e0761e60D4eE7ed3';
     abi = [{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"names","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"getAddresses","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"name","type":"bytes32"}],"name":"register","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"addresses","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"}]
@@ -15,7 +15,7 @@ window.addEventListener('load', function(){
   }
 })
 
-userAddress = function(){return "hi";}
+userAddress = "";
 getAccount = function(){
   web3.eth.getAccounts(function(e, accounts){
     if(accounts && accounts.length > 0){
