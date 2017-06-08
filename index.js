@@ -45,7 +45,6 @@ getNames = function(addresses){
     consensysAcademy.names(addresses[i],function(e,encodedName){
       if(encodedName){ 
         console.log('ENCODED_NAME: ', encodedName)
-        console.log('NAME: ', hex2a(encodedName.toString()))
         renderName(address, hex2a(encodedName.toString()))
       }else{
         console.log(e)
@@ -83,6 +82,7 @@ renderAddresses = function(addresses){
 }
 
 renderName = function(address, name){
+  console.log('NAME_HERE: ', name)
   document.getElementById(address.toString()).innerHTML = name + " \t " + address; 
 }
 
@@ -93,3 +93,7 @@ function hex2a(hexx) {
         str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
     return str;
 }
+
+
+
+
