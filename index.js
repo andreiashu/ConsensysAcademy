@@ -82,7 +82,7 @@ renderAddresses = function(addresses){
 }
 
 renderName = function(address, name){
-  document.getElementById(address).innerHTML = address + " \t " + name; 
+  document.getElementById(address.toString()).innerHTML = address + " \t " + name; 
 }
 
 function hex2a(hexx) {
