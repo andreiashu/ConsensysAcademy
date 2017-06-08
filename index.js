@@ -31,6 +31,7 @@ getAccount = function(){
 getAddresses = function(){
   consensysAcademy.getAddresses.call(function(e,addresses){
     if(addresses){ 
+      debugger;
       console.log('ADDRESSES: ', addresses)
       renderAddresses(addresses)
     }else{
