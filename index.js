@@ -41,15 +41,18 @@ getAddresses = function(){
 
 getNames = function(addresses){
   for (var i = 0; i < addresses.length; i++) {
-    consensysAcademy.names(addresses[i],function(e,encodedName){
-      if(encodedName){ 
-        console.log('ENCODED_NAME: ', encodedName)
-        renderName(addresses[i], hex2a(encodedName.toString()))
-      }else{
-        console.log(e)
-      }
-    })
+    getName(addresses[i])
   }
+}
+getName = function(address){
+  consensysAcademy.names(addresses,function(e,encodedName){
+    if(encodedName){ 
+      console.log('ENCODED_NAME: ', encodedName)
+      renderName(address.toString(), hex2a(encodedName.toString()))
+    }else{
+      console.log(e)
+    }
+  })
 }
 sendTx = function(){
  if(typeof Web3 === 'undefined'){
@@ -82,7 +85,7 @@ renderAddresses = function(addresses){
 
 renderName = function(address, name){
   console.log('NAME: ', name)
-  document.getElementById(address.toString()).innerHTML = name + " \t " + address; 
+  document.getElementById(address).innerHTML = name + " \t " + address; 
 }
 
 function hex2a(hexx) {
