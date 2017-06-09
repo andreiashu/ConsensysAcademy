@@ -41,6 +41,7 @@ getAddresses = function(){
   consensysAcademy.getAddresses.call(function(e,addresses){
     if(addresses){ 
       console.log('ADDRESSES: ', addresses)
+      console.log('consensysAcademy: ', consensysAcademy)
       renderAddresses(addresses)
     }else{
       console.log(e)
