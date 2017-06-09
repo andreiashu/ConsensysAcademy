@@ -1,11 +1,10 @@
 
 window.addEventListener('load', function(){
   if(web3 === 'undefined'){
-    alert('Please Download Metamask')
+    web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io'));
+    // alert('Please Download Metamask')
     //disable everything
   }else{
-
-    // web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io'));
 
     contractAddress = '0x12458C69eC849aF2854fDec7e0761e60D4eE7ed3';
     abi = [{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"names","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"getAddresses","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"name","type":"bytes32"}],"name":"register","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"addresses","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"}]
@@ -100,7 +99,7 @@ function hex2a(hexx) {
     var hex = hexx.toString();//force conversion
     var str = '';
     for (var i = 0; i < hex.length; i += 2)
-        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+      str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
     return str;
 }
 
