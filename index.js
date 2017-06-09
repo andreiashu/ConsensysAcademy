@@ -38,7 +38,7 @@ getAccount = function(){
 }
 
 getAddresses = function(){
-  consensysAcademy.getAddresses.call(function(e,addresses){
+  consensysAcademy.getAddresses(function(e,addresses){
     if(addresses){ 
       console.log('ADDRESSES: ', addresses)
       console.log('consensysAcademy: ', consensysAcademy)
