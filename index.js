@@ -41,11 +41,10 @@ getAddresses = function(){
 
 getNames = function(addresses){
   for (var i = 0; i < addresses.length; i++) {
-    var address = addresses[i];
     consensysAcademy.names(addresses[i],function(e,encodedName){
       if(encodedName){ 
         console.log('ENCODED_NAME: ', encodedName)
-        renderName(address, hex2a(encodedName.toString()))
+        renderName(addresses[i], hex2a(encodedName.toString()))
       }else{
         console.log(e)
       }
@@ -63,7 +62,7 @@ sendTx = function(){
       if(txHash){ 
         console.log('TXHASH: ', txHash)
         getAddresses();
-        document.getElementById('success').innerHTML = "REGISTRATION SUCCESS!!!";
+        document.getElementById('success').innerHTML = "Thank You For Registering";
       }else{
         console.log(e)
       }
