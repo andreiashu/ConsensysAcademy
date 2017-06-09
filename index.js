@@ -1,6 +1,6 @@
 
 window.addEventListener('load', function(){
-  if(web3 === 'undefined'){
+  if(typeof web3 === 'undefined'){
     web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io'));
     // alert('Please Download Metamask')
     //disable everything
