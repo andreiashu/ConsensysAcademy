@@ -10,9 +10,9 @@ window.addEventListener('load', function(){
     contractAddress = '0x12458C69eC849aF2854fDec7e0761e60D4eE7ed3';
     abi = [{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"names","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"getAddresses","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"name","type":"bytes32"}],"name":"register","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"addresses","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"}]
     consensysAcademy = web3.eth.contract(abi).at(contractAddress);
-    // setTimeout(getAddresses, 5000); 
     // setTimeout(getAccount, 5000);
-    getAddresses()
+    setTimeout(getAddresses, 5000); 
+    // getAddresses()
     getAccount()
     web3.version.getNetwork(function(e,r){
       if(r == 1){
@@ -38,8 +38,8 @@ getAccount = function(){
 }
 
 getAddresses = function(){
-  consensysAcademy.getAddresses(function(e,addresses){
-    if(addresses){ 
+  consensysAcademy.getAddresses.call(function(e,addresses){
+    if(addresses){
       console.log('ADDRESSES: ', addresses)
       console.log('consensysAcademy: ', consensysAcademy)
       renderAddresses(addresses)
