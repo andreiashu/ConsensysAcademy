@@ -12,7 +12,7 @@ window.addEventListener('load', function(){
     consensysAcademy = web3.eth.contract(abi).at(contractAddress);
     setTimeout(getAddresses, 500); //why do I need this?
     // getAddresses() //instead of this? Which returns the array with only first element! WTF
-    getAccount()
+    // getAccount()
     web3.version.getNetwork(function(e,r){
       if(r == 1){
         console.log("MAINNET");
@@ -23,18 +23,10 @@ window.addEventListener('load', function(){
   }
 })
 
-userAddress = "";
-getAccount = function(){
-  web3.eth.getAccounts(function(e, accounts){
-    if(accounts && accounts.length > 0){
-      console.log('ACCOUNT: ', accounts[0])
-      userAddress = accounts[0];
-    }else{
-      console.log(e)
-      alert("Please open metamask")
-    }
-  })
-}
+// userAddress = "";
+// getAccount = function(){
+
+// }
 
 getAddresses = function(){
   consensysAcademy.getAddresses.call(function(e,addresses){
@@ -64,19 +56,26 @@ getName = function(address){
   })
 }
 sendTx = function(){
- if(typeof Web3 === 'undefined'){
+  if(typeof Web3 === 'undefined'){
     alert('Please Download Metamask')
-  }else if(userAddress === ''){
-    alert('Please open Metamask to do that')
   }else{
     var name = document.getElementById('nameField').value;
-    consensysAcademy.register(name,{from: userAddress},function(e,txHash){
-      if(txHash){ 
-        console.log('TXHASH: ', txHash)
-        getAddresses();
-        document.getElementById('success').innerHTML = "Thank You For Registering";
+    web3.eth.getAccounts(function(e, accounts){
+      if(accounts && accounts.length > 0){
+        console.log('ACCOUNT: ', accounts[0])
+        var userAddress = accounts[0];
+        consensysAcademy.register(name,{from: userAddress},function(e,txHash){
+          if(txHash){ 
+            console.log('TXHASH: ', txHash)
+            getAddresses();
+            document.getElementById('success').innerHTML = "Thank You For Registering";
+          }else{
+            console.log(e)
+          }
+        })
       }else{
         console.log(e)
+        alert("Please open metamask")
       }
     })
   }
