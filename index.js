@@ -1,6 +1,6 @@
 
 window.addEventListener('load', function(){
-  if(Web3 === 'undefined'){
+  if(web3 === 'undefined'){
     alert('Please Download Metamask')
     //disable everything
   }else{
