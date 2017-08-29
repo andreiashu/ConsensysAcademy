@@ -62,14 +62,14 @@
   </head>
 
   <body>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="set.js"></script>
 
     <div class="container-narrow">
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="/index.html">View Certificates</a></li>
-          <li><a href="/set.html">Set Certificates</a></li>
+          <li><a href="/index.html">View Certificates</a></li>
+          <li class="active"><a href="/set.html">Set Certificates</a></li>
         </ul>
         <h3 class="muted">Certificates</h3>
       </div>
@@ -78,13 +78,24 @@
 
       <div class="jumbotron">
         <h1>ConsenSys Academy Certificates</h1>
-        <p class="lead">The following is a list of students who passed the consenSys Academy developer program. It is reading from the Ethereum blockchain where The certificate was issued using the uPort Registry standard. </p>
+        <p class="lead">Use this page to form a transaction to set a Consensys Academy Certificate. Paste the text created into the 'data' field in <a href="https://www.myetherwallet.com/#send-transaction">MyEtherWallet</a></p>
         <!-- <a class="btn btn-large btn-success" href="#">Sign up today</a> -->
       </div>
-
       <hr>
+          <div class="container">
+      <link href="assets/css/form.css" rel="stylesheet">
+      <div class="form-tx">
+        <h2 class="form-heading">Sign A Certificate</h2>
+        <label for="inputEmail">Issuer Id</label>
+        <input id="inputEmail" class="form-control" placeholder="0x123..." required autofocus>
+        <label>Subject Id</label>
+        <input class="form-control" placeholder="0x456..." required>
+        <button id="form_tx_button" class="btn btn-lg btn-primary btn-block" onclick="formTx()" >Form Transaction</button>
+        <textarea id="tx_data" class="form-control" rows="6" cols="100"></textarea>
+      </div>
 
-      <div id="diplomas" class="row-fluid marketing"></div>
+    </div>
+      <!-- <div id="diplomas" class="row-fluid marketing"></div> -->
 
       <hr>
 

@@ -15,7 +15,7 @@ window.addEventListener('load', function(){
     contractAddress = '0x12458C69eC849aF2854fDec7e0761e60D4eE7ed3';
     abi = [{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"names","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"getAddresses","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"name","type":"bytes32"}],"name":"register","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"addresses","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"}]
     consensysAcademy = web3.eth.contract(abi).at(contractAddress);
-    setTimeout(getAddresses, 500); //why do I need this?
+    // setTimeout(getAddresses, 500); //why do I need this?
     // getAddresses() //instead of this? Which returns the array with only first element! WTF
     // getAccount()
     web3.version.getNetwork(function(e,r){
@@ -86,43 +86,6 @@ sendTx = function(){
   }
 }
 
-renderAddresses = function(addresses){
-  //replace all this shit with creation of html elements nested and appended
-  // diplomaPicsHTML = ''
-  // diplomaMetaHTML = ''
-  diplomasHTML = ''
-  for (var i = 0; i < addresses.length; i++) {
-    // diplomaPicsHTML += renderDiplomaPic(addresses[i])
-    // diplomaMetaHTML += renderDiplomaMeta(addresses[i])
-    diplomasHTML += renderDiploma(renderDiplomaPic(addresses[i]),renderDiplomaMeta(addresses[i]))
-  }
-  // document.getElementById('diploma_pics').innerHTML = diplomaPicsHTML
-  // document.getElementById('diploma_meta').innerHTML = diplomaMetaHTML
-  document.getElementById('diplomas').innerHTML = diplomasHTML
-  getNames(addresses)
-}
-
-renderName = function(address, name){
-  console.log('NAME: ', name)
-  document.getElementById(address).innerHTML += name + " \t " + address; 
-}
-
-function hex2a(hexx) {
-    var hex = hexx.toString();//force conversion
-    var str = '';
-    for (var i = 0; i < hex.length; i += 2)
-      str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
-    return str;
-}
-
-renderDiplomaPic = function(address){
-  return '<div class="col-lg-6"><img src="diploma.jpg" width="400"></div>';
-}
-renderDiplomaMeta = function(address, meta){
-  return '<div id="'+address+'" class="col-lg-6"><h4></h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed massa a dolor pretium congue nec sollicitudin erat. Vivamus nulla eros, consectetur vitae egestas vitae, fringilla id nunc.</p>'+'</div>'
-}
-
-renderDiploma = function(pic, meta){
-  var div = '<div class="col-lg-12" class="inlineBlock">'+pic+meta+'</div><hr>'
-  return div
+formTx = function(){
+  document.getElementById('tx_data').value = "0x12345986123987452397457648215" 
 }
